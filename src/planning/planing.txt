@@ -1,0 +1,51 @@
+בס"ד
+*Home*
+State:
+Users – original users
+UsersForDisplayed – users for displayed
+whoUseRightSide – default – {} (will store the id of the user)
+
+
+Style
+Class name "split left"
+
+Components:
+Search: will filter Users and store results in UsersForDisplayed
+Add: display add new user componnets on right side- need to send via props to Main user that right side in use
+<MainUser/> :
+Recived: User from UsersForDisplayed, isRightSideInUse(number)
+Return(func): updated user, isNeedToDelete (will send the id), whoUseRightSide(will send the id of the user)
+
+
+*MainUser*
+State:
+isOtherDataOpened – default – false
+isRightSideisMy (will compare the props with the id and store Boolean (need to be in useEffect)
+isDetailsDataDislplayed (will created todos & posts components & isRightSideisMy =>true)
+isBorderRed (will check with func if all tasks are completed or not)
+Name
+Email
+Street
+City
+zipcode
+
+
+
+Style
+Class name "split left"
+Border: { isBorderRed – true /false}
+backGroundColor: { isOtherDataOpened && isRightSideisMy }
+
+Components:
+Id -> will be clickable (state – isDetailsDataDislplayed ->true & isRightSideisMy ->true)
+Name + input
+Email + input
+Other data -> open onHover. Close onClick (state – isOtherDataOpened)
+Update -> will create updated user and send to Home
+Delete -> will send the id to Home
+
+Tados
+State:
+
+
+

@@ -1,0 +1,51 @@
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+.borderRed {
+  border: 1px solid red;
+}
+
+.borderGreen {
+  border: 1px solid rgb(107, 248, 78);
+}
+
+.borderBlack {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.spaceAround {
+  margin: 5px;
+}
+
+.borderBlack2 {
+  /* border: 1.5px solid rgb(0, 0, 0); */
+  border-radius: 25px;
+  border: 2px solid #000000;
+  padding: 10px;
+  width: 90%;
+  height: 70px;
+  margin: auto;
+}
+.background-gray{
+  background-color: rgba(128, 128, 128, 0.123);
+}
+.background-yellow {
+  background-color: #f3d267;
+}
