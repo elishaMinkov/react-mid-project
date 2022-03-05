@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Tasks from '../components/Tasks';
 import '../style.css';
 
 const MainUser = (props) => {
@@ -8,6 +9,7 @@ const MainUser = (props) => {
   let [street, setStreet] = useState('');
   let [city, setCity] = useState('');
   let [zipCode, setZipcode] = useState('');
+  let [tasks, setTasks] = useState([]);
 
   let [isBorderRed, setIsBorderRed] = useState(true);
   let [isSideInMyUse, setIsSideInMyUse] = useState(false);
@@ -18,21 +20,19 @@ const MainUser = (props) => {
   }, [props.isSideInUse]);
 
   useEffect(() => {
-    console.log('get new user', props.user.id);
     setUser(props.user);
     setName(props.user.name);
     setEmail(props.user.email);
     setStreet(props.user.address?.street);
     setCity(props.user.address?.city);
     setZipcode(props.user.address?.zipcode);
-
-    if (props.user.tasks) {
-      let unCompleted = props.user.tasks.filter(
-        (item) => item.completed === false
-      );
-      unCompleted.length > 0 ? setIsBorderRed(true) : setIsBorderRed(false);
-    }
+    setTasks(props.user.tasks);
   }, [props.user]);
+
+  useEffect(() => {
+    let unCompleted = tasks.filter((item) => item.completed === false);
+    unCompleted.length > 0 ? setIsBorderRed(true) : setIsBorderRed(false);
+  }, [tasks]);
 
   const updateSide = () => {
     let obj = {};
@@ -44,10 +44,11 @@ const MainUser = (props) => {
     let copyUser = { ...user };
     copyUser.name = name;
     copyUser.email = email;
-    !copyUser.address && (copyUser.address = {})
+    !copyUser.address && (copyUser.address = {});
     copyUser.address.street = street;
     copyUser.address.city = city;
     copyUser.address.zipcode = zipCode;
+    copyUser.tasks = tasks;
     console.log(copyUser);
     props.update(copyUser);
   };
@@ -56,8 +57,16 @@ const MainUser = (props) => {
     props.delete(user.id);
   };
 
+  const updateTasks = (tasks) => {
+    setTasks(tasks);
+  };
+
   return (
-    <div className={`${isBorderRed ? 'borderRed' : 'borderGreen'} ${isSideInMyUse &&'background-red'} spaceAround`}>
+    <div
+      className={`${isBorderRed ? 'borderRed' : 'borderGreen'} ${
+        isSideInMyUse && 'background-red'
+      } spaceAround`}
+    >
       <span onClick={updateSide}>ID: </span>
       {user.id}
       <br />
@@ -103,7 +112,7 @@ const MainUser = (props) => {
           <br />
           <span>Zip Code: </span>{' '}
           <input
-           // className='background-gray'
+            // className='background-gray'
             value={zipCode}
             type='text'
             onChange={(e) => setZipcode(e.target.value)}
@@ -112,7 +121,9 @@ const MainUser = (props) => {
         </div>
       )}
       {isSideInMyUse && (
-        <div className='split right'>todos posts {user.id} </div>
+        <div className='split right'>
+          <Tasks tasks={user.tasks} update={updateTasks} /> posts {user.id}{' '}
+        </div>
       )}
       {'                                  '}
       <input

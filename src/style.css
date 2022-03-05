@@ -24,6 +24,10 @@ input {
   border: 1px solid red;
 }
 
+.borderPurple {
+  border: 1px solid purple;
+}
+
 .borderGreen {
   border: 1px solid rgb(107, 248, 78);
 }
