@@ -36,7 +36,7 @@ const MainUser = (props) => {
 
   const updateSide = () => {
     let obj = {};
-    obj[user.id] = true;
+    obj[user.id] = !isSideInMyUse;
     props.getRightSide(obj);
   };
 
@@ -57,7 +57,7 @@ const MainUser = (props) => {
   };
 
   return (
-    <div className={`${isBorderRed ? 'borderRed' : 'borderGreen'} spaceAround`}>
+    <div className={`${isBorderRed ? 'borderRed' : 'borderGreen'} ${isSideInMyUse &&'background-red'} spaceAround`}>
       <span onClick={updateSide}>ID: </span>
       {user.id}
       <br />
@@ -75,7 +75,9 @@ const MainUser = (props) => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <br />
+      <br />
       <input
+        className='background-gray'
         type='button'
         value='Other Data'
         onMouseOver={() => setIsOtherDataOpened(true)}
@@ -85,7 +87,7 @@ const MainUser = (props) => {
         <div className='borderBlack2 background-gray'>
           <span>Street: </span>{' '}
           <input
-            className='background-gray'
+            //className='background-gray'
             type='text'
             value={street}
             onChange={(e) => setStreet(e.target.value)}
@@ -93,7 +95,7 @@ const MainUser = (props) => {
           <br />
           <span>city: </span>{' '}
           <input
-            className='background-gray'
+            //className='background-gray'
             value={city}
             type='text'
             onChange={(e) => setCity(e.target.value)}
@@ -101,7 +103,7 @@ const MainUser = (props) => {
           <br />
           <span>Zip Code: </span>{' '}
           <input
-            className='background-gray'
+           // className='background-gray'
             value={zipCode}
             type='text'
             onChange={(e) => setZipcode(e.target.value)}

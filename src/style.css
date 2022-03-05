@@ -1,3 +1,7 @@
+input {
+  background-color: inherit;
+}
+
 .split {
   height: 100%;
   width: 50%;
@@ -8,12 +12,10 @@
   padding-top: 20px;
 }
 
-/* Control the left side */
 .left {
   left: 0;
 }
 
-/* Control the right side */
 .right {
   right: 0;
 }
@@ -43,9 +45,12 @@
   height: 70px;
   margin: auto;
 }
-.background-gray{
-  background-color: rgba(128, 128, 128, 0.123);
+.background-gray {
+  background-color: rgb(221, 218, 218);
 }
 .background-yellow {
   background-color: #f3d267;
+}
+.background-red {
+  background-color: #eb8e5086;
 }
