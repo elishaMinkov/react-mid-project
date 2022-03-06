@@ -15,7 +15,6 @@ const Home = () => {
     let users = await utils.getUsersFullData();
     setUsers(users);
     setIndex(users.length + 1);
-    console.log('get data', users);
   }, []);
 
   useEffect(() => {
@@ -36,7 +35,6 @@ const Home = () => {
     let copyUsers = users.map(
       (userToCheck) => (user.id === userToCheck.id && user) || userToCheck
     );
-    console.log('upadted users', copyUsers);
     setUsers(copyUsers);
   };
   const deleteUser = (id) => {

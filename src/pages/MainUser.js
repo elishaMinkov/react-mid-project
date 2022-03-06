@@ -55,7 +55,6 @@ const MainUser = (props) => {
     copyUser.address.zipcode = zipCode;
     copyUser.tasks = tasks;
     copyUser.posts = posts;
-    console.log(copyUser);
     props.update(copyUser);
   };
 
