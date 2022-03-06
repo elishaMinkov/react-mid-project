@@ -8,7 +8,7 @@ const Task = (props) => {
   };
 
   return (
-    <div className='borderPurple spaceAround relative' >
+    <div className='border-purple spaceAround relative' >
       Title: {props.task.title}
       <br />
       Completed: {String(props.task.completed)}

@@ -63,12 +63,12 @@ const MainUser = (props) => {
 
   return (
     <div
-      className={`${isBorderRed ? 'borderRed' : 'borderGreen'} ${
-        isSideInMyUse && 'background-red'
-      } spaceAround relative`}
+      className={`${isBorderRed ? 'border-red' : 'border-green'} 
+      ${isSideInMyUse && 'background-red'} spaceAround relative`}
     >
-      <span onClick={updateSide}>ID: </span>
-      {user.id}
+      <span onClick={updateSide} className='pointer'>
+        ID: {user.id}{' '}
+      </span>
       <br />
       <span>Name: </span>{' '}
       <input
@@ -93,7 +93,7 @@ const MainUser = (props) => {
         onClick={() => isOtherDataOpened && setIsOtherDataOpened(false)}
       />
       {isOtherDataOpened && (
-        <div className='borderBlack2 background-gray'>
+        <div className='border-black2 background-gray'>
           <span>Street: </span>{' '}
           <input
             type='text'
@@ -120,9 +120,9 @@ const MainUser = (props) => {
       {isSideInMyUse && (
         <div className='split right'>
           <div>
-            <Tasks tasks={user.tasks} update={updateTasks} />
+            <Tasks tasks={user.tasks} id={user.id} update={updateTasks} />
           </div>
-          <div>Posts</div>
+          <div className='split-ver'>Posts</div>
         </div>
       )}
       {'                                  '}

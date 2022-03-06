@@ -50,7 +50,7 @@ const Home = () => {
   };
 
   return (
-    <div className='split left borderBlack'>
+    <div className='split left border-black'>
       <span>Search </span>
       <input type='text' onChange={(e) => setTextForSearch(e.target.value)} />
       <input
