@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Posts from '../components/Posts';
 import Tasks from '../components/Tasks';
 import '../style.css';
 
@@ -10,6 +11,7 @@ const MainUser = (props) => {
   let [city, setCity] = useState('');
   let [zipCode, setZipcode] = useState('');
   let [tasks, setTasks] = useState([]);
+  let [posts, setPosts] = useState([]);
 
   let [isBorderRed, setIsBorderRed] = useState(true);
   let [isSideInMyUse, setIsSideInMyUse] = useState(false);
@@ -27,11 +29,14 @@ const MainUser = (props) => {
     setCity(props.user.address?.city);
     setZipcode(props.user.address?.zipcode);
     setTasks(props.user.tasks);
+    setPosts(props.user.posts);
   }, [props.user]);
 
   useEffect(() => {
+    if(tasks){
     let unCompleted = tasks.filter((item) => item.completed === false);
     unCompleted.length > 0 ? setIsBorderRed(true) : setIsBorderRed(false);
+    }
   }, [tasks]);
 
   const updateSide = () => {
@@ -49,6 +54,7 @@ const MainUser = (props) => {
     copyUser.address.city = city;
     copyUser.address.zipcode = zipCode;
     copyUser.tasks = tasks;
+    copyUser.posts = posts;
     console.log(copyUser);
     props.update(copyUser);
   };
@@ -60,6 +66,10 @@ const MainUser = (props) => {
   const updateTasks = (tasks) => {
     setTasks(tasks);
   };
+
+  const updatePosts = (posts) =>{
+    setPosts(posts)
+  }
 
   return (
     <div
@@ -120,9 +130,11 @@ const MainUser = (props) => {
       {isSideInMyUse && (
         <div className='split right'>
           <div>
-            <Tasks tasks={user.tasks} id={user.id} update={updateTasks} />
+            <Tasks tasks={tasks} id={user.id} updateTasks={updateTasks} />
           </div>
-          <div className='split-ver'>Posts</div>
+          <div>
+            <Posts posts={posts} id ={user.id} updatePosts={updatePosts}/>
+          </div>
         </div>
       )}
       {'                                  '}

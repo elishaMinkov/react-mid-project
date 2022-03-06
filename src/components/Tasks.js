@@ -4,13 +4,13 @@ import Task from './Task';
 
 const Tasks = (props) => {
   let [tasks, setTasks] = useState([]);
-  let [index, setIndex] = useState(0);
+  let [index, setIndex] = useState(1);
   let [id, setId] = useState(props.id);
   let [isAddNewTask, setIsAddNewTask] = useState(false);
 
   useEffect(() => {
-    setTasks(props.tasks);
-    setIndex(props.tasks.length + 1);
+    props.tasks && setTasks(props.tasks);
+    props.tasks && setIndex(props.tasks.length + 1);
   }, [props.tasks]);
 
   const handleCompleted = (id) => {
@@ -19,15 +19,15 @@ const Tasks = (props) => {
       let tasksCopy = [...tasks];
       tasksCopy[taskIndex].completed = true;
       setTasks(tasksCopy);
-      props.update(tasksCopy);
+      props.updateTasks(tasksCopy);
     }
   };
   const addNewTask = (task) => {
-    task.userId= id;
+    task.userId = id;
     let updatedTasks = [...tasks, task];
-    setTasks(updatedTasks)
-    props.update(updatedTasks);
-    setIsAddNewTask(false)
+    setTasks(updatedTasks);
+    props.updateTasks(updatedTasks);
+    setIsAddNewTask(false);
   };
 
   return (
