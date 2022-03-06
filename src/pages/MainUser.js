@@ -65,7 +65,7 @@ const MainUser = (props) => {
     <div
       className={`${isBorderRed ? 'borderRed' : 'borderGreen'} ${
         isSideInMyUse && 'background-red'
-      } spaceAround`}
+      } spaceAround relative`}
     >
       <span onClick={updateSide}>ID: </span>
       {user.id}
@@ -96,7 +96,6 @@ const MainUser = (props) => {
         <div className='borderBlack2 background-gray'>
           <span>Street: </span>{' '}
           <input
-            //className='background-gray'
             type='text'
             value={street}
             onChange={(e) => setStreet(e.target.value)}
@@ -104,7 +103,6 @@ const MainUser = (props) => {
           <br />
           <span>city: </span>{' '}
           <input
-            //className='background-gray'
             value={city}
             type='text'
             onChange={(e) => setCity(e.target.value)}
@@ -112,7 +110,6 @@ const MainUser = (props) => {
           <br />
           <span>Zip Code: </span>{' '}
           <input
-            // className='background-gray'
             value={zipCode}
             type='text'
             onChange={(e) => setZipcode(e.target.value)}
@@ -122,22 +119,27 @@ const MainUser = (props) => {
       )}
       {isSideInMyUse && (
         <div className='split right'>
-          <Tasks tasks={user.tasks} update={updateTasks} /> posts {user.id}{' '}
+          <div>
+            <Tasks tasks={user.tasks} update={updateTasks} />
+          </div>
+          <div>Posts</div>
         </div>
       )}
       {'                                  '}
-      <input
-        type='button'
-        value='Update'
-        className='background-yellow'
-        onClick={updateUser}
-      />
-      <input
-        type='button'
-        value='Delete'
-        className='background-yellow'
-        onClick={handleDelete}
-      />
+      <div className='right-button'>
+        <input
+          type='button'
+          value='Update'
+          className='background-yellow '
+          onClick={updateUser}
+        />
+        <input
+          type='button'
+          value='Delete'
+          className='background-yellow '
+          onClick={handleDelete}
+        />
+      </div>
     </div>
   );
 };

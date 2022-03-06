@@ -8,12 +8,17 @@ input {
   position: fixed;
   z-index: 1;
   top: 0;
+  /* overflow-x: hidden; */
+}
+
+.split-ver {
+  height: 50vh;
   overflow-x: hidden;
-  padding-top: 20px;
 }
 
 .left {
   left: 0;
+  overflow-x: hidden;
 }
 
 .right {
@@ -57,4 +62,13 @@ input {
 }
 .background-red {
   background-color: #eb8e5086;
+}
+.relative {
+  position: relative;
+}
+
+.right-button {
+  position: absolute;
+  right: 10px;
+  top: 20%
 }

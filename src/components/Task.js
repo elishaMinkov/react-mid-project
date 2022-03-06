@@ -8,12 +8,12 @@ const Task = (props) => {
   };
 
   return (
-    <div className='borderPurple spaceAround'>
+    <div className='borderPurple spaceAround relative' >
       Title: {props.task.title}
       <br />
       Completed: {String(props.task.completed)}
       <input
-        className='background-yellow'
+        className='background-yellow right-button'
         type='button'
         value='Mark Completed'
         onClick={handleClick}

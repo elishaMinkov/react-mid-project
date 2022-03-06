@@ -10,22 +10,24 @@ const Tasks = (props) => {
 
   const handleCompleted = (id) => {
     //todo: currently add new task, need to update
-    let tasksArray = tasks.filter((task) => task.id === id);
-    if (tasksArray.length > 0) {
-      let task = tasksArray[0];
-      task.completed = true;
-      let newTasks = [...tasks, task]
-      setTasks(newTasks);
-      props.update(newTasks);
+    let taskIndex = tasks.findIndex((task) => task.id === id);
+    if (taskIndex > -1) {
+      let tasksCopy = [...tasks];
+      tasksCopy[taskIndex].completed = true;
+      setTasks(tasksCopy);
+      props.update(tasksCopy);
     }
   };
 
   return (
     <div>
+      Title
+    <div className='split-ver spaceAround'>
       {tasks.length > 0 &&
         tasks.map((task, index) => {
           return <Task key={index} task={task} mark={handleCompleted} />;
         })}
+    </div>
     </div>
   );
 };
