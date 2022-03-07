@@ -33,9 +33,9 @@ const MainUser = (props) => {
   }, [props.user]);
 
   useEffect(() => {
-    if(tasks){
-    let unCompleted = tasks.filter((item) => item.completed === false);
-    unCompleted.length > 0 ? setIsBorderRed(true) : setIsBorderRed(false);
+    if (tasks) {
+      let unCompleted = tasks.filter((item) => item.completed === false);
+      unCompleted.length > 0 ? setIsBorderRed(true) : setIsBorderRed(false);
     }
   }, [tasks]);
 
@@ -66,9 +66,9 @@ const MainUser = (props) => {
     setTasks(tasks);
   };
 
-  const updatePosts = (posts) =>{
-    setPosts(posts)
-  }
+  const updatePosts = (posts) => {
+    setPosts(posts);
+  };
 
   return (
     <div
@@ -79,14 +79,14 @@ const MainUser = (props) => {
         ID: {user.id}{' '}
       </span>
       <br />
-      <span>Name: </span>{' '}
+      <span>Name: </span>
       <input
         type='text'
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <br />
-      <span>Email: </span>{' '}
+      <span>Email: </span>
       <input
         type='email'
         value={email}
@@ -128,15 +128,11 @@ const MainUser = (props) => {
       )}
       {isSideInMyUse && (
         <div className='split right'>
-          <div>
-            <Tasks tasks={tasks} id={user.id} updateTasks={updateTasks} />
-          </div>
-          <div>
-            <Posts posts={posts} id ={user.id} updatePosts={updatePosts}/>
-          </div>
+          <Tasks tasks={tasks} id={user.id} updateTasks={updateTasks} />
+
+          <Posts posts={posts} id={user.id} updatePosts={updatePosts} />
         </div>
       )}
-      {'                                  '}
       <div className='right-button'>
         <input
           type='button'

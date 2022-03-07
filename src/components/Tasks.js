@@ -18,20 +18,18 @@ const Tasks = (props) => {
     if (taskIndex > -1) {
       let tasksCopy = [...tasks];
       tasksCopy[taskIndex].completed = true;
-      setTasks(tasksCopy);
       props.updateTasks(tasksCopy);
     }
   };
   const addNewTask = (task) => {
     task.userId = id;
     let updatedTasks = [...tasks, task];
-    setTasks(updatedTasks);
     props.updateTasks(updatedTasks);
     setIsAddNewTask(false);
   };
 
   return (
-    <div className={`border-black ${isAddNewTask ? 'height50' : ''}`}>
+    <div className={"border-black height-50 padding-7"}>
       <div className='relative'>
         <span>Todos – User {id} </span>{' '}
         {!isAddNewTask && (

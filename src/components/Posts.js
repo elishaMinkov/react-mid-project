@@ -16,15 +16,14 @@ const Posts = (props) => {
   const addNewPost = (post) => {
     post.userId = id;
     let updatedposts = [...posts, post];
-    setPosts(updatedposts);
     props.updatePosts(updatedposts);
     setIsAddNewPost(false);
   };
 
   return (
-    <div className={`border-black ${isAddNewPost ? 'height50' : ''}`}>
+    <div className={"border-black height-50 padding-7"}>
       <div className='relative'>
-        <span className='space-around'>Posts – User {id} </span>{' '}
+        <span >Posts – User {id} </span>{' '}
         {!isAddNewPost && (
           <input
             type='button'
