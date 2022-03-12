@@ -22,8 +22,8 @@ const Posts = (props) => {
 
   return (
     <div className={"border-black height-50 padding-7"}>
-      <div className='relative'>
-        <span >Posts – User {id} </span>{' '}
+      <div className='relative spaceAround'>
+        <span >Posts – User {id} </span>
         {!isAddNewPost && (
           <input
             type='button'
@@ -40,11 +40,12 @@ const Posts = (props) => {
           cancel={() => setIsAddNewPost(false)}
         />
       ) : (
-        <div className='split-ver spaceAround'>
-          {posts.length > 0 &&
+        <div className='split-ver'>
+          {posts.length > 0 ?
             posts.map((post, index) => {
               return <Post key={index} post={post} />;
-            })}
+            }):
+            <span>No Posts has been found...</span>}
         </div>
       )}
     </div>

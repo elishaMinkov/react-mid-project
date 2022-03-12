@@ -64,7 +64,7 @@ const Home = () => {
           cancel={() => takeRightSide({ home: false })}
         />
       )}
-      {usersForDisplay.length > 0 &&
+      {usersForDisplay.length > 0 ?
         usersForDisplay.map((user) => {
           return (
             <MainUser
@@ -76,7 +76,8 @@ const Home = () => {
               delete={deleteUser}
             />
           );
-        })}
+        }):
+        <h4>Loadind users list...</h4>}
     </div>
   );
 };

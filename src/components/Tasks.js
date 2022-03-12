@@ -30,8 +30,8 @@ const Tasks = (props) => {
 
   return (
     <div className={"border-black height-50 padding-7"}>
-      <div className='relative'>
-        <span>Todos – User {id} </span>{' '}
+      <div className='relative spaceAround'>
+        <span>Todos – User {id} </span>
         {!isAddNewTask && (
           <input
             type='button'
@@ -48,11 +48,12 @@ const Tasks = (props) => {
           cancel={() => setIsAddNewTask(false)}
         />
       ) : (
-        <div className='split-ver spaceAround'>
-          {tasks.length > 0 &&
+        <div className='split-ver '>
+          {tasks.length > 0 ?
             tasks.map((task, index) => {
               return <Task key={index} task={task} mark={handleCompleted} />;
-            })}
+            }):
+            <span>No Tasks has been found...</span>}
         </div>
       )}
     </div>

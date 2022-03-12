@@ -76,11 +76,12 @@ const MainUser = (props) => {
       ${isSideInMyUse && 'background-red'} spaceAround relative`}
     >
       <span onClick={updateSide} className='pointer'>
-        ID: {user.id}{' '}
+        ID: {user.id}
       </span>
       <br />
       <span>Name: </span>
       <input
+      className=' spaceAround'
         type='text'
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -88,14 +89,14 @@ const MainUser = (props) => {
       <br />
       <span>Email: </span>
       <input
+      className=' spaceAround'
         type='email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <br />
-      <br />
       <input
-        className='background-gray'
+        className='background-gray spaceAround'
         type='button'
         value='Other Data'
         onMouseOver={() => setIsOtherDataOpened(true)}

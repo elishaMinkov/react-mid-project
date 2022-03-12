@@ -15,6 +15,7 @@ const AddNewUser = (props) => {
       <form onSubmit={handleAdd}>
         <label>Name: </label>
         <input
+          className='spaceAround'
           type='text'
           name='name'
           required
@@ -24,6 +25,7 @@ const AddNewUser = (props) => {
         <br />
         <label>Email: </label>
         <input
+          className='spaceAround'
           type='email'
           name='email'
           required
@@ -32,8 +34,17 @@ const AddNewUser = (props) => {
         />
         <br />
         <br />
-        <input type='submit' value='Add' />
-        <input type='button' value='Cancel' onClick={props.cancel} />
+        <input
+          type='submit'
+          value='Add'
+          className='background-yellow spaceAround'
+        />
+        <input
+          type='button'
+          value='Cancel'
+          onClick={props.cancel}
+          className='background-yellow spaceAround'
+        />
       </form>
       <br />
       <br />

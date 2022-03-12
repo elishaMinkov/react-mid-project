@@ -51,6 +51,13 @@ input {
 .spaceAround {
   margin: 5px;
 }
+div.spaceAround{
+  padding: 10px;
+  margin: 2px;
+}
+.pointer:hover{
+  border: 3px solid rgb(101, 221, 161); 
+}
 
 .border-black2 {
   /* border: 1.5px solid rgb(0, 0, 0); */
@@ -82,4 +89,9 @@ input {
 .pointer,
 input[type='button'] {
   cursor: pointer;
+}
+.test {
+  border: 15px solid green;
+  padding: 20px;
+  margin: 2px;
 }
