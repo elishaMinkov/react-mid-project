@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import AddNewPost from './AddNewPost';
 import Post from './Post';
@@ -21,33 +22,37 @@ const Posts = (props) => {
   };
 
   return (
-    <div className={"border-black height-50 padding-7"}>
-      <div className='relative spaceAround'>
-        <span >Posts – User {id} </span>
-        {!isAddNewPost && (
-          <input
-            type='button'
-            value='add'
-            className='background-yellow right-button'
-            onClick={() => setIsAddNewPost(true)}
-          />
-        )}
-      </div>
-      {isAddNewPost ? (
-        <AddNewPost
-          id={index}
-          add={addNewPost}
-          cancel={() => setIsAddNewPost(false)}
-        />
-      ) : (
-        <div className='split-ver'>
-          {posts.length > 0 ?
-            posts.map((post, index) => {
-              return <Post key={index} post={post} />;
-            }):
-            <span>No Posts has been found...</span>}
-        </div>
-      )}
+    <div className={'border-black height-50 padding-7'}>
+      
+          <div className='relative spaceAround'>
+            <span>Posts – User {id} </span>
+            {!isAddNewPost && (
+              <input
+                type='button'
+                value='add'
+                className='background-yellow right-button'
+                onClick={() => setIsAddNewPost(true)}
+              />
+            )}
+          </div>
+          {isAddNewPost ? (
+            <AddNewPost
+              id={index}
+              add={addNewPost}
+              cancel={() => setIsAddNewPost(false)}
+            />
+          ) : (
+            <div className='split-ver'>
+              {posts.length > 0 ? (
+                posts.map((post, index) => {
+                  return <Post key={index} post={post} />;
+                })
+              ) : (
+                <span>No Posts has been found...</span>
+              )}
+            </div>
+          )}
+        
     </div>
   );
 };

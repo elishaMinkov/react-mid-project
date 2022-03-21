@@ -3,6 +3,8 @@ import Posts from '../components/Posts';
 import Tasks from '../components/Tasks';
 import '../style.css';
 
+import { Grid } from '@mui/material';
+
 const MainUser = (props) => {
   let [user, setUser] = useState({});
   let [name, setName] = useState('');
@@ -75,79 +77,77 @@ const MainUser = (props) => {
       className={`${isBorderRed ? 'border-red' : 'border-green'} 
       ${isSideInMyUse && 'background-red'} spaceAround relative`}
     >
-      <span onClick={updateSide} className='pointer'>
-        ID: {user.id}
-      </span>
-      <br />
-      <span>Name: </span>
-      <input
-      className=' spaceAround'
-        type='text'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <br />
-      <span>Email: </span>
-      <input
-      className=' spaceAround'
-        type='email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <input
-        className='background-gray spaceAround'
-        type='button'
-        value='Other Data'
-        onMouseOver={() => setIsOtherDataOpened(true)}
-        onClick={() => isOtherDataOpened && setIsOtherDataOpened(false)}
-      />
-      {isOtherDataOpened && (
-        <div className='border-black2 background-gray'>
-          <span>Street: </span>{' '}
-          <input
-            type='text'
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-          />
-          <br />
-          <span>city: </span>{' '}
-          <input
-            value={city}
-            type='text'
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <br />
-          <span>Zip Code: </span>{' '}
-          <input
-            value={zipCode}
-            type='text'
-            onChange={(e) => setZipcode(e.target.value)}
-          />
-          <br />
-        </div>
-      )}
-      {isSideInMyUse && (
-        <div className='split right'>
-          <Tasks tasks={tasks} id={user.id} updateTasks={updateTasks} />
+      
+          <div style={{ border: '2px solid green' }}>
+            <span onClick={updateSide} className='pointer'>
+              ID: {user.id}
+            </span>
+            <br />
+            <span>Name: </span>
+            <input
+              className=' spaceAround'
+              type='text'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
+            <span>Email: </span>
+            <input
+              className=' spaceAround'
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <input
+              className='background-gray spaceAround'
+              type='button'
+              value='Other Data'
+              onMouseOver={() => setIsOtherDataOpened(true)}
+              onClick={() => isOtherDataOpened && setIsOtherDataOpened(false)}
+            />
+            {isOtherDataOpened && (
+              <div className='border-black2 background-gray'>
+                <span>Street: </span>{' '}
+                <input
+                  type='text'
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
+                />
+                <br />
+                <span>city: </span>{' '}
+                <input
+                  value={city}
+                  type='text'
+                  onChange={(e) => setCity(e.target.value)}
+                />
+                <br />
+                <span>Zip Code: </span>{' '}
+                <input
+                  value={zipCode}
+                  type='text'
+                  onChange={(e) => setZipcode(e.target.value)}
+                />
+                <br />
+              </div>
+            )}
 
-          <Posts posts={posts} id={user.id} updatePosts={updatePosts} />
-        </div>
-      )}
-      <div className='right-button'>
-        <input
-          type='button'
-          value='Update'
-          className='background-yellow '
-          onClick={updateUser}
-        />
-        <input
-          type='button'
-          value='Delete'
-          className='background-yellow '
-          onClick={handleDelete}
-        />
-      </div>
+            <div className='right-button'>
+              <input
+                type='button'
+                value='Update'
+                className='background-yellow '
+                onClick={updateUser}
+              />
+              <input
+                type='button'
+                value='Delete'
+                className='background-yellow '
+                onClick={handleDelete}
+              />
+            </div>
+          </div>
+       
     </div>
   );
 };
